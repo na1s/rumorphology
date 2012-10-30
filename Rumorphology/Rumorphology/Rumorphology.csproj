@@ -42,8 +42,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lucene\RussianAnalyzer.cs" />
+    <Compile Include="Lucene\RussianMorphology.cs" />
     <Compile Include="DictionaryReader\DictionaryReader.cs" />
-    <Compile Include="DictionaryReader\IDictionaryQuery.cs" />
     <Compile Include="DictionaryReader\IDictionaryReader.cs" />
     <Compile Include="DictionaryReader\Lemma.cs" />
   </ItemGroup>
