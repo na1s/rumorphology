@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Rumorphology.DictionaryReader
+﻿namespace Rumorphology.OpenCorpora.DictionaryReader
 {
     public interface IDictionaryReader
     {

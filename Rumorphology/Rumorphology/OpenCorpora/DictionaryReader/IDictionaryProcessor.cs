@@ -1,6 +1,4 @@
-using Rumorphology.OpenCorpora;
-
-namespace Rumorphology.DictionaryReader
+namespace Rumorphology.OpenCorpora.DictionaryReader
 {
     public interface IDictionaryProcessor
     {
