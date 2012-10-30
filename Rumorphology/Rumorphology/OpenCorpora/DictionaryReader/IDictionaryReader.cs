@@ -4,6 +4,6 @@ namespace Rumorphology.DictionaryReader
 {
     public interface IDictionaryReader
     {
-        void LoadDictionary(string filename);
+        void ProcessDictionary(string filename, IDictionaryProcessor dictionaryProcessor);
     }
 }

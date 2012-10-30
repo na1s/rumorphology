@@ -1,19 +1,14 @@
 using System.Collections.Generic;
 using System.Xml;
+using Rumorphology.OpenCorpora;
 
 namespace Rumorphology.DictionaryReader
 {
     public class DictionaryReader : IDictionaryReader
     {
-        private Dictionary<string, HashSet<string>> _convertions;
 
-        public DictionaryReader()
+        public void ProcessDictionary(string filename, IDictionaryProcessor dictionaryProcessor)
         {
-            _convertions = new Dictionary<string, HashSet<string>>();
-        }
-        public void LoadDictionary(string filename)
-        {
-            
             using (XmlReader reader = new XmlTextReader(filename))
             {
                 bool openItem = true;
@@ -36,31 +31,18 @@ namespace Rumorphology.DictionaryReader
                         }
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "f" && openItem)
                         {
-                            currentLemma.Forms.Add(reader.GetAttribute("t"));
+                            currentLemma.Forms.Add(new LemmaForm(reader.GetAttribute("t"),new List<Grammem>()));
                         }
                     }
-                        // EndElement was found, check if it is named item, if it is, store the object in the list and set openItem to false.
+                    // EndElement was found, check if it is named item, if it is, store the object in the list and set openItem to false.
                     else if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "lemma" && openItem)
                     {
                         openItem = false;
-                        if (!_convertions.ContainsKey(currentLemma.Text))
-                        {
-                            _convertions[currentLemma.Text] = new HashSet<string>();
-                        }
-                        _convertions[currentLemma.Text].Add(currentLemma.Text);
-                        foreach (var form in currentLemma.Forms)
-                        {
-                            if (!_convertions.ContainsKey(form))
-                            {
-                                _convertions[form] = new HashSet<string>();
-                            }
-                            _convertions[form].Add(currentLemma.Text);
-                        }
-                        
+                        dictionaryProcessor.ProcessLemma(currentLemma);
+
                     }
                 }
             }
-
         }
     }
 }
