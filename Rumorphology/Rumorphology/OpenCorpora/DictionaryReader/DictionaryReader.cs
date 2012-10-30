@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Xml;
-using Rumorphology.OpenCorpora;
 
-namespace Rumorphology.DictionaryReader
+namespace Rumorphology.OpenCorpora.DictionaryReader
 {
     public class DictionaryReader : IDictionaryReader
     {
