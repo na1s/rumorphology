@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumorphology", "Rumorpholog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumorphology.Tests", "Rumorphology.Tests\Rumorphology.Tests.csproj", "{882ECFCB-E344-41DE-95B0-D91818557DDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "sampleApp\SampleApp\SampleApp.csproj", "{FB9C5140-A033-4F84-8C13-C2CF2CD2EB50}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -21,10 +19,6 @@ Global
 		{882ECFCB-E344-41DE-95B0-D91818557DDE}.Debug|x86.Build.0 = Debug|x86
 		{882ECFCB-E344-41DE-95B0-D91818557DDE}.Release|x86.ActiveCfg = Release|x86
 		{882ECFCB-E344-41DE-95B0-D91818557DDE}.Release|x86.Build.0 = Release|x86
-		{FB9C5140-A033-4F84-8C13-C2CF2CD2EB50}.Debug|x86.ActiveCfg = Debug|x86
-		{FB9C5140-A033-4F84-8C13-C2CF2CD2EB50}.Debug|x86.Build.0 = Debug|x86
-		{FB9C5140-A033-4F84-8C13-C2CF2CD2EB50}.Release|x86.ActiveCfg = Release|x86
-		{FB9C5140-A033-4F84-8C13-C2CF2CD2EB50}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

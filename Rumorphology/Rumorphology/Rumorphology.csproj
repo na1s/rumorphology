@@ -44,9 +44,12 @@
   <ItemGroup>
     <Compile Include="Lucene\RussianAnalyzer.cs" />
     <Compile Include="Lucene\RussianMorphology.cs" />
-    <Compile Include="DictionaryReader\DictionaryReader.cs" />
-    <Compile Include="DictionaryReader\IDictionaryReader.cs" />
-    <Compile Include="DictionaryReader\Lemma.cs" />
+    <Compile Include="OpenCorpora\DictionaryReader\DictionaryReader.cs" />
+    <Compile Include="OpenCorpora\DictionaryReader\IDictionaryProcessor.cs" />
+    <Compile Include="OpenCorpora\DictionaryReader\IDictionaryReader.cs" />
+    <Compile Include="OpenCorpora\Grammem.cs" />
+    <Compile Include="OpenCorpora\Lemma.cs" />
+    <Compile Include="OpenCorpora\LemmaForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
