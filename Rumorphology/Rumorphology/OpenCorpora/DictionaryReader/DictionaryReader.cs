@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Xml;
+using Rumorphology.OpenCorpora.DictionaryProcessor;
 
 namespace Rumorphology.OpenCorpora.DictionaryReader
 {
     public class DictionaryReader : IDictionaryReader
     {
+        #region IDictionaryReader Members
 
-        public void ProcessDictionary(string filename, IDictionaryProcessor dictionaryProcessor)
+        public void ProcessDictionary(string filename, IEnumerable<IDictionaryProcessor> dictionaryProcessors)
         {
             using (XmlReader reader = new XmlTextReader(filename))
             {
@@ -30,18 +32,22 @@ namespace Rumorphology.OpenCorpora.DictionaryReader
                         }
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "f" && openItem)
                         {
-                            currentLemma.Forms.Add(new LemmaForm(reader.GetAttribute("t"),new List<Grammem>()));
+                            currentLemma.Forms.Add(new LemmaForm(reader.GetAttribute("t"), new List<Grammem>()));
                         }
                     }
-                    // EndElement was found, check if it is named item, if it is, store the object in the list and set openItem to false.
+                        // EndElement was found, check if it is named item, if it is, store the object in the list and set openItem to false.
                     else if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "lemma" && openItem)
                     {
                         openItem = false;
-                        dictionaryProcessor.ProcessLemma(currentLemma);
-
+                        foreach (IDictionaryProcessor dictionaryProcessor in dictionaryProcessors)
+                        {
+                            dictionaryProcessor.ProcessLemma(currentLemma);
+                        }
                     }
                 }
             }
         }
+
+        #endregion
     }
 }

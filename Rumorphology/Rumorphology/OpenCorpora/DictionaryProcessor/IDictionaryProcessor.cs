@@ -1,4 +1,4 @@
-namespace Rumorphology.OpenCorpora.DictionaryReader
+namespace Rumorphology.OpenCorpora.DictionaryProcessor
 {
     public interface IDictionaryProcessor
     {

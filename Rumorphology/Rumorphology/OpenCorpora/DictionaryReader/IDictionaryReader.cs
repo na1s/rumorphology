@@ -1,7 +1,10 @@
-﻿namespace Rumorphology.OpenCorpora.DictionaryReader
+﻿using System.Collections.Generic;
+using Rumorphology.OpenCorpora.DictionaryProcessor;
+
+namespace Rumorphology.OpenCorpora.DictionaryReader
 {
     public interface IDictionaryReader
     {
-        void ProcessDictionary(string filename, IDictionaryProcessor dictionaryProcessor);
+        void ProcessDictionary(string filename, IEnumerable<IDictionaryProcessor> dictionaryProcessors);
     }
 }
