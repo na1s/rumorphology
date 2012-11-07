@@ -38,7 +38,7 @@ namespace Rumorphology.OpenCorpora.DictionaryProcessor
 
         private void AddWordToDictionary(Lemma lemma, string word)
         {
-            if (_lemmas.ContainsKey(word))
+            if (!_lemmas.ContainsKey(word))
             {
                 _lemmas[word] = new List<Lemma>();
             }

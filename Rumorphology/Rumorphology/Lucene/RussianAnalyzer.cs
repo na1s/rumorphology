@@ -4,12 +4,15 @@ using System.IO;
 using Lucene.Net.Analysis;
 using Lucene.Net.Analysis.Ru;
 using Rumorphology.OpenCorpora.DictionaryProcessor;
+using Rumorphology.OpenCorpora.DictionaryReader;
 using Version = Lucene.Net.Util.Version;
 
 namespace Rumorphology.Lucene
 {
     public class RussianAnalyzer : Analyzer
     {
+        private readonly string _directoryLocation;
+
         private static readonly String[] RUSSIAN_STOP_WORDS = {
                                                                   "а", "без", "более", "бы", "был", "была", "были",
                                                                   "было", "быть", "в",
@@ -33,8 +36,6 @@ namespace Rumorphology.Lucene
                                                                   "это", "я"
                                                               };
 
-        private readonly IWordBaseFormQuery _baseFormQuery;
-
         private readonly Version matchVersion;
 
         /// <summary>
@@ -43,10 +44,10 @@ namespace Rumorphology.Lucene
         private readonly ISet<string> stopSet;
 
 
-        public RussianAnalyzer(Version matchVersion, IWordBaseFormQuery baseFormQuery)
+        public RussianAnalyzer(Version matchVersion, string directoryLocation)
             : this(matchVersion, DefaultSetHolder.DEFAULT_STOP_SET)
         {
-            _baseFormQuery = baseFormQuery;
+            _directoryLocation = directoryLocation;
         }
 
         /**
@@ -76,11 +77,14 @@ namespace Rumorphology.Lucene
 
         public override TokenStream TokenStream(string fieldName, TextReader reader)
         {
+            var dictionaryReader = new DictionaryReader();
+            var inMemoryWordsDictionary = new InMemoryWordsDictionary();
+            dictionaryReader.ProcessDictionary(_directoryLocation,new List<IDictionaryProcessor>(){inMemoryWordsDictionary});
             TokenStream result = new RussianLetterTokenizer(reader);
             result = new LowerCaseFilter(result);
             result = new StopFilter(StopFilter.GetEnablePositionIncrementsVersionDefault(matchVersion),
                                     result, stopSet);
-            result = new OpenCorporaRussianStemFilter(result, _baseFormQuery);
+            result = new OpenCorporaRussianStemFilter(result, inMemoryWordsDictionary);
             return result;
         }
 
