@@ -1,4 +1,4 @@
 Russian analyzer for Lucene
 ================================
 
-*Used dictionary from [source of this content](http://www.opencorpora.org/).*
+*Use dictionary from [OpenCorpora](http://www.opencorpora.org/).*
