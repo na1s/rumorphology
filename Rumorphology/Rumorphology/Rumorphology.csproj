@@ -55,6 +55,9 @@
     <Compile Include="OpenCorpora\Grammem.cs" />
     <Compile Include="OpenCorpora\Lemma.cs" />
     <Compile Include="OpenCorpora\LemmaForm.cs" />
+    <Compile Include="Utils\TrieFinder.cs" />
+    <Compile Include="Utils\Trie.cs" />
+    <Compile Include="Utils\TrieNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">

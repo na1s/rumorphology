@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Lucene\OpenCorporaRussianStemmerTests.cs" />
     <Compile Include="OpenCorpora\DictionaryProcessor\InMemoryWordsDictionaryTests.cs" />
+    <Compile Include="Utils\TrieTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Moq">
